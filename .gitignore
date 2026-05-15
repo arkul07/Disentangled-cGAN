@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Data (large)
+data/archive/img_align_celeba/img_align_celeba/
+
+# Outputs/artifacts
+outputs/checkpoints/
+outputs/samples/
+outputs/eval/
+outputs/plots/
+mlruns/
+mlflow.db
+
+# OS
+.DS_Store

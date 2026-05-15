@@ -1,5 +1,81 @@
 # Disentangled Conditional GAN for Attribute-Controlled Face Generation
 
+PyTorch implementation of a baseline conditional GAN and a disentangled variant (InfoGAN‑style) for attribute‑controlled face synthesis on CelebA.
+
+## Features
+- Baseline cGAN (DCGAN‑style)
+- Disentangled cGAN with $z_c / z_n$ split and Q‑network
+- Training, evaluation, and MLflow tracking utilities
+
+## Project Structure
+```
+data/
+    celeba_dataset.py
+    archive/
+models/
+    generator.py
+    discriminator.py
+    q_network.py
+    baseline_cgan.py
+utils/
+    helpers.py
+    checkpoint.py
+    image_utils.py
+    logger.py
+outputs/
+    checkpoints/
+    samples/
+    eval/
+    plots/
+    reports/
+train_baseline.py
+train_disentangled.py
+evaluate_baseline.py
+evaluate_disentangled.py
+compare_experiments.py
+config.py
+requirements.txt
+```
+
+## Setup
+1) Install dependencies:
+```
+pip install -r requirements.txt
+```
+
+2) Prepare CelebA:
+- Images: `data/archive/img_align_celeba/img_align_celeba/`
+- Attributes CSV: `data/archive/list_attr_celeba.csv`
+
+## Train
+Baseline:
+```
+python train_baseline.py
+```
+
+Disentangled:
+```
+python train_disentangled.py
+```
+
+## Evaluate
+Disentangled evaluation grids:
+```
+python evaluate_disentangled.py --ckpt outputs/checkpoints/disentangled_ckpt_epoch_050.pth
+```
+
+## Compare Runs
+```
+python compare_experiments.py
+```
+
+## Configuration
+Edit `config.py` for hyperparameters, dataset paths, and subset size.
+
+## Notes
+- Dataset images are excluded from git via `.gitignore`.
+- Set `MAX_IMAGES = None` in `config.py` to use the full dataset.# Disentangled Conditional GAN for Attribute-Controlled Face Generation
+
 This repository contains a baseline conditional GAN and an enhanced disentangled conditional GAN for face generation on CelebA. The goal is to improve attribute control (e.g., Smiling, Eyeglasses) without changing unrelated features.
 
 Use this README as the complete project description. It is written to be fed into a report‑generation tool.

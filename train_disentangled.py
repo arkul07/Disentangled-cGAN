@@ -209,6 +209,7 @@ def train() -> None:
                 path = os.path.join(SAMPLES_DIR, f"disentangled_epoch_{epoch:03d}.png")
                 save_image_grid(sample, path, nrow=8)
                 tracker.log_artifact(path)
+            net_g.train()
 
         # Save checkpoint
         ckpt = {
